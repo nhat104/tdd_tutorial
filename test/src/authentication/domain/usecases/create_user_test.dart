@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tdd_tutorial/core/errors/failure.dart';
 import 'package:tdd_tutorial/src/authentication/domain/repositories/authentication_repository.dart';
 import 'package:tdd_tutorial/src/authentication/domain/usecases/create_user.dart';
 
@@ -20,7 +19,7 @@ void main() {
 
   test('should call the [AuthRepo.createUser]', () async {
     when(() => repository.createUser(
-          createAt: any(named: 'createAt'),
+          createdAt: any(named: 'createdAt'),
           name: any(named: 'name'),
           avatar: any(named: 'avatar'),
         )).thenAnswer((_) async => const Right(null));
@@ -29,7 +28,7 @@ void main() {
 
     expect(result, equals(const Right<dynamic, void>(null)));
     verify(() => repository.createUser(
-          createAt: params.createAt,
+          createdAt: params.createdAt,
           name: params.name,
           avatar: params.avatar,
         )).called(1);
